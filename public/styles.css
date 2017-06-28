@@ -1,0 +1,33 @@
+body {
+  background-color: blanchedalmond;
+  color: crimson;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0rem 25rem;
+}
+
+h1 {
+  font-size: 4rem;
+  text-align: center;
+}
+
+form {
+  justify-content: center;
+  text-align: center;
+}
+
+.listArea {
+  text-align: left;
+}
+
+.status:checked + span {
+  text-decoration: line-through;
+}
+
+ul {
+  line-height: 1.5rem;
+  font-size: 1rem;
+  border-radius: 2px;
+}

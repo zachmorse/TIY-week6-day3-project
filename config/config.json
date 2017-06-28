@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "crunchyave",
+    "password": null,
+    "database": "todoForClass",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "crunchyave",
+    "password": null,
+    "database": "todoForClass",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "crunchyave",
+    "password": null,
+    "database": "todoForClass",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}
