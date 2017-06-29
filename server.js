@@ -20,15 +20,11 @@ app.use(morgan("dev"));
 app.use("/", express.static("./public"));
 
 var todos = [];
-// var itemID = 0;
-// app.get("/", function(req, res) {
-//   res.render("index", { todos: todos });
-// });
 
 app.get("/", function(req, res) {
   console.log("getting");
-  models.tasklist.findAll().then(function(undoneTasks) {
-    res.render("index", { todos: undoneTasks });
+  models.tasklist.findAll().then(function(tasklist) {
+    res.render("index", { todos: tasklist });
   });
 });
 
@@ -50,10 +46,40 @@ app.post("/addtask", function(req, res) {
 });
 
 app.post("/complete", function(req, res) {
-  var completeItem = req.body.params;
-  res.send(completeItem);
-  console.log("Button ID: ", completeItem);
+  var tableID = req.body.capture;
+  console.log("Button ID:", tableID);
+  models.tasklist
+    .update({ completed: true }, { where: { id: tableID } })
+    .then(function(doneItem) {
+      res.redirect("/");
+    })
+    .catch(function(err) {
+      res.status(500).send(err);
+    });
 });
+
+app.post("/delete", function(req, res) {
+  var deleteID = req.body.deletethis;
+  models.tasklist
+    .destroy({ where: { id: deleteID } })
+    .then(function() {
+      res.redirect("/");
+    })
+    .catch(function(err) {
+      res.status(500).send(err);
+    });
+});
+
+// app.delete("/users/:id", function(req, res) {
+//   models.users
+//     .destroy({ where: { id: req.params.id } })
+//     .then(function() {
+//       res.send("User deleted");
+//     })
+//     .catch(function(err) {
+//       res.status(500).send(err);
+//     });
+// });
 
 // LISTENER
 

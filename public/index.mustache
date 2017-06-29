@@ -20,9 +20,29 @@
 			<div class="listArea">
 				<ul>
 					{{#todos}}
+					{{^completed}}
 					<li>
-						<input id="{{id}}" type="submit" name={{id}} value="Mark Complete"><span> «-- {{title}}</span>
+						<input type="submit" name="capture" value="Mark Complete" 
+						   onclick="this.value='{{id}}'; this.form.submit();" />
+						 <span> «-- {{title}}</span>
 					</li>
+					{{/completed}}
+					{{/todos}}
+				</ul>
+			</div>
+		</form>
+		<h3>Completed Tasks</h3>
+		<form action="/delete" method="post">
+			<div class="listArea">
+				<ul>
+					{{#todos}}
+					{{#completed}}
+					<li>
+						<input type="submit" name="deletethis" value="delete" 
+						   onclick="this.value='{{id}}'; this.form.submit();" />
+						 <span> «-- {{title}}</span>
+					</li>
+					{{/completed}}
 					{{/todos}}
 				</ul>
 			</div>
