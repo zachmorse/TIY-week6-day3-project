@@ -69,6 +69,17 @@ app.post("/delete", function(req, res) {
     });
 });
 
+app.post("/deleteall", function(req, res) {
+  models.tasklist
+    .destroy({ where: { completed: true } })
+    .then(function() {
+      res.redirect("/");
+    })
+    .catch(function(err) {
+      res.status(500).send(err);
+    });
+});
+
 // app.delete("/users/:id", function(req, res) {
 //   models.users
 //     .destroy({ where: { id: req.params.id } })

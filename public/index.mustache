@@ -15,38 +15,44 @@
 			<input type="text" name="title" placeholder="enter task">
 			<input type="submit" value="Add Task">
 		</form>
-		
+
+		<form action="/deleteall" method="post">
+			<div class="masterdelete">
+				<input type="submit" name="clearcompleted" value="Delete All">
+			</div>
+		</form>
+
+		<h3>Incomplete Tasks:</h3>
+
 		<form action="/complete" method="post">
 			<div class="listArea">
 				<ul>
-					{{#todos}}
-					{{^completed}}
+					{{#todos}} {{^completed}}
 					<li>
-						<input type="submit" name="capture" value="Mark Complete" 
-						   onclick="this.value='{{id}}'; this.form.submit();" />
-						 <span> «-- {{title}}</span>
+						<input type="submit" name="capture" value="Mark Complete" onclick="this.value='{{id}}'; this.form.submit();" />
+						<span> «-- {{title}}</span>
 					</li>
-					{{/completed}}
-					{{/todos}}
+					{{/completed}} {{/todos}}
 				</ul>
 			</div>
 		</form>
+		<br>
+
 		<h3>Completed Tasks</h3>
+
 		<form action="/delete" method="post">
 			<div class="listArea">
 				<ul>
-					{{#todos}}
-					{{#completed}}
+					{{#todos}} {{#completed}}
 					<li>
-						<input type="submit" name="deletethis" value="delete" 
-						   onclick="this.value='{{id}}'; this.form.submit();" />
-						 <span> «-- {{title}}</span>
+						<input type="submit" name="deletethis" value="Delete" onclick="this.value='{{id}}'; this.form.submit();" />
+						<span> «-- {{title}}</span>
 					</li>
-					{{/completed}}
-					{{/todos}}
+					{{/completed}} {{/todos}}
 				</ul>
 			</div>
 		</form>
+
 	</div>
 </body>
 
