@@ -22,7 +22,6 @@ app.use("/", express.static("./public"));
 var todos = [];
 
 app.get("/", function(req, res) {
-  console.log("getting");
   models.tasklist.findAll().then(function(tasklist) {
     res.render("index", { todos: tasklist });
   });
